@@ -52,6 +52,16 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
     setRowErrors([])
   }
 
+  // central close function: resets state and calls parent's onClose
+  const closeDialog = () => {
+    // reset local state
+    setFile(null)
+    setLoading(false)
+    resetMessages()
+    // notify parent to hide dialog
+    onClose()
+  }
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     resetMessages()
     const selectedFile = e.target.files?.[0] ?? null
@@ -137,7 +147,8 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
       })
 
       if (!res.ok) {
-        // fallback to client CSV template
+        // fallback to client CSV template and show a small message
+        setError(`Failed to download Excel template (${res.status}). Downloading CSV fallback.`)
         downloadCsvClient(typeKey)
         return
       }
@@ -149,6 +160,7 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
     } catch (err) {
       // fallback client CSV on error
       console.error("downloadExcelFromServer error:", err)
+      setError("Could not download Excel template — falling back to CSV.")
       downloadCsvClient(type)
     }
   }
@@ -204,17 +216,18 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
         return
       }
 
-      // success - show message and close after short delay
+      // success - show message and close after short delay unless there are returned row errors
       const createdMsg = (data && (data.message || data.created || data.created_count)) ?? `Uploaded ${file.name}`
       setSuccess(String(createdMsg))
-      // if backend returned per-row errors even on 201, show them
       if (data && data.errors && Array.isArray(data.errors) && data.errors.length) {
         setRowErrors(data.errors.map((e: any) => String(e)))
+        // keep dialog open so user can inspect rowErrors
+      } else {
+        // close quickly so user sees success then dialog closes
+        setTimeout(() => {
+          closeDialog()
+        }, 900)
       }
-
-      setTimeout(() => {
-        onClose()
-      }, 900)
     } catch (err) {
       console.error("Upload error:", err)
       setError("Network error")
@@ -230,7 +243,7 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
           <h2 className="text-xl font-semibold text-foreground">
             Bulk Upload {type.charAt(0).toUpperCase() + type.slice(1)}
           </h2>
-          <button onClick={onClose} className="text-muted-foreground hover:text-foreground transition">
+          <button onClick={closeDialog} className="text-muted-foreground hover:text-foreground transition">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -283,8 +296,8 @@ export function BulkUploadDialog({ token, type, onClose }: BulkUploadDialogProps
           )}
 
           <div className="flex justify-end gap-2 pt-4">
-            <Button variant="outline" onClick={onClose} disabled={loading}>
-              Cancel
+            <Button variant="outline" onClick={closeDialog} disabled={loading}>
+              Close
             </Button>
             <Button onClick={handleUpload} disabled={!file || loading}>
               {loading ? "Uploading..." : "Upload"}

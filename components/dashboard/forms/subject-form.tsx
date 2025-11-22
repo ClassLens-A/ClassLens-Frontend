@@ -10,7 +10,7 @@ import { X } from "lucide-react"
 
 interface SubjectFormProps {
   token: string | null
-  subject?: { id: string; name: string; code: string; description: string } | null
+  subject?: { id: string; name: string; code: string } | null
   onClose: () => void
 }
 
@@ -18,7 +18,6 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     code: "",
-    description: "",
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -28,7 +27,6 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
       setFormData({
         name: subject.name,
         code: subject.code,
-        description: subject.description,
       })
     }
   }, [subject])
@@ -40,8 +38,8 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
 
     try {
       const url = subject
-        ? `http://127.0.0.1:8000/api/admin/subjects/${subject.id}`
-        : "http://127.0.0.1:8000/api/admin/subjects"
+        ? `http://127.0.0.1:8000/api/admin/subjects/${subject.id}/`
+        : "http://127.0.0.1:8000/api/admin/subjects/"
 
       const method = subject ? "PUT" : "POST"
 
@@ -96,13 +94,7 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
             />
           </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">Description</label>
-          <Input
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          />
-        </div>
+       
 
         {error && <p className="text-sm text-destructive">{error}</p>}
 

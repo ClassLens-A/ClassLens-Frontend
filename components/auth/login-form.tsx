@@ -13,7 +13,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onLogin }: LoginFormProps) {
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -24,27 +24,32 @@ export function LoginForm({ onLogin }: LoginFormProps) {
     setLoading(true)
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/login", {
+      const response = await fetch("http://127.0.0.1:8000/api/admin/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       })
 
-      const data = await response.json()
+      const data = await response.json().catch(() => ({}))
 
       if (!response.ok) {
-        setError(data.detail || "Login failed")
+        setError(data.error || "Login failed")
         return
       }
 
-      if (data.access_token) {
-        onLogin(data.access_token)
+      // backend returns: { access, refresh, username }
+      if (data.access) {
+        onLogin(data.access)
+        // if later you want, you can also store refresh & username in localStorage here
+        localStorage.setItem("refresh_token", data.refresh)
+        localStorage.setItem("admin_username", data.username)
       } else {
-        setError("No token received")
+        setError("No access token received from server")
       }
     } catch (err) {
+      console.error("Login error:", err)
       setError("Network error. Check if backend is running.")
     } finally {
       setLoading(false)
@@ -55,19 +60,21 @@ export function LoginForm({ onLogin }: LoginFormProps) {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">ClessLens</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">ClassLens</h1>
           <p className="text-muted-foreground">Education Management System</p>
         </div>
 
         <Card className="p-6 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                Username
+              </label>
               <Input
-                type="email"
-                placeholder="admin@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="admin"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
                 disabled={loading}
                 className="w-full"
@@ -75,7 +82,9 @@ export function LoginForm({ onLogin }: LoginFormProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Password</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                Password
+              </label>
               <Input
                 type="password"
                 placeholder="••••••••"
@@ -100,7 +109,9 @@ export function LoginForm({ onLogin }: LoginFormProps) {
           </form>
 
           <div className="mt-6 pt-6 border-t border-border">
-            <p className="text-xs text-muted-foreground text-center">Demo credentials: admin@example.com / password</p>
+            <p className="text-xs text-muted-foreground text-center">
+              Demo credentials: <code>admin</code> / <code>password</code> (or whatever you set in DB)
+            </p>
           </div>
         </Card>
       </div>

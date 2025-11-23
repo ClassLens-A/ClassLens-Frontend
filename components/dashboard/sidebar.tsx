@@ -1,6 +1,6 @@
 "use client"
 
-import { LayoutDashboard, Users, BookOpen,  Link2, UserCheck } from "lucide-react"
+import { LayoutDashboard, Users, BookOpen,  Link2, UserCheck,Shield } from "lucide-react"
 
 interface SidebarProps {
   currentPage: string
@@ -12,6 +12,7 @@ interface SidebarProps {
 export function Sidebar({ currentPage, onPageChange, isOpen }: SidebarProps) {
   const menuItems = [
     { id: "overview", label: "Overview", icon: LayoutDashboard },
+    { id: "admin-users", label: "Admin Users", icon: Shield },
     { id: "teachers", label: "Teachers", icon: Users },
     { id: "students", label: "Students", icon: Users },
     { id: "subjects", label: "Subjects", icon: BookOpen },

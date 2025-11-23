@@ -23,7 +23,7 @@ export function OverviewPage({ token }: OverviewPageProps) {
 
     const fetchStats = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/admin/stats", {
+        const response = await fetch("http://127.0.0.1:8000/api/admin/stats/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

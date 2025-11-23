@@ -10,7 +10,7 @@ import { X } from "lucide-react"
 
 interface AdminUserFormProps {
   token: string | null
-  admin?: { id: string; username: string; is_active: boolean; created_at: string } | null
+  admin?: { id: string; username: string; is_active: boolean } | null
   onClose: () => void
 }
 

@@ -15,7 +15,6 @@ interface AdminUser {
   id: string
   username: string
   is_active: boolean
-  created_at: string
 }
 
 export function AdminUsersPage({ token }: AdminUsersPageProps) {
@@ -113,7 +112,6 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
               <tr>
                 <th className="text-left p-6 font-semibold text-foreground">Username</th>
                 <th className="text-left p-6 font-semibold text-foreground">Status</th>
-                <th className="text-left p-6 font-semibold text-foreground">Created</th>
                 <th className="text-right p-6 font-semibold text-foreground">Actions</th>
               </tr>
             </thead>
@@ -145,7 +143,6 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
                         {admin.is_active ? "Active" : "Inactive"}
                       </span>
                     </td>
-                    <td className="p-6 text-muted-foreground">{new Date(admin.created_at).toLocaleDateString()}</td>
                     <td className="p-6">
                       <div className="flex justify-end gap-2">
                         <Button

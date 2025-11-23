@@ -1,6 +1,106 @@
-[00:00:01.153] Server  LOG      ✓ Ready in 700ms
-[00:00:09.210] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.393] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:09.393] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:09.393] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763649249363}
-[00:00:11.407] Browser LOG     [v0] Stats fetch error: {}
+[00:00:02.087] Server  LOG      ✓ Ready in 1443ms
+[00:00:17.209] Server  LOG      ○ Compiling / ...
+[00:00:18.520] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:19.427] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:19.427] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:19.427] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763914813274}
+[00:00:51.430] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:51.430] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:51.430] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:51.430] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:52.605] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:00:52.605] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:52.605] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:52.605] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:52.605] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:53.759] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:00:53.759] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:53.759] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:53.759] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:00:53.759] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:12.583] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:12.583] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:12.583] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:12.583] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:14.419] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:03:14.419] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:14.419] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:14.419] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:14.420] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:16.426] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:03:16.426] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:16.426] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:16.426] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:03:16.426] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:18:49.964] Server  LOG      ✓ Compiled in 138ms
+[00:18:50.426] Browser ERROR   ./app/page.tsx:4:1
+Export LoginForm doesn't exist in target module
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { LoginForm } from "@/components/auth/login-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Dashboard } from "@/components/dashboard/dashboard"
+  6 |
+  7 | export default function Home() {
+
+The export LoginForm was not found in module [project]/components/auth/login-form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:18:50.427] Browser ERROR   ./app/page.tsx:4:1
+Export LoginForm doesn't exist in target module
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { LoginForm } from "@/components/auth/login-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Dashboard } from "@/components/dashboard/dashboard"
+  6 |
+  7 | export default function Home() {
+
+The export LoginForm was not found in module [project]/components/auth/login-form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component]
+[00:18:52.720] Server  LOG      ✓ Compiled in 121ms
+[00:18:53.424] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:18:53.424] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:18:53.424] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:18:53.424] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE1MTQ1LCJpYXQiOjE3NjM5MTQ4NDUsImp0aSI6ImVjZjc3ZGMxNDgwNzRlOGE4ZWFmNjI0OTQ2MTljYzA3IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.dGhrkgVqJ1y5xxochpRCNK7rbU4GQBnROkGzhdFOVzY
+[00:19:09.120] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:09.263] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:19:09.263] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:19:09.263] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763915943488}
+[00:22:08.909] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:09.035] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:22:09.035] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:22:09.035] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763916123261}
+[00:22:46.614] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:46.614] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:46.614] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:46.614] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:47.666] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:22:47.667] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:47.667] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:47.667] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:47.667] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:55.619] Browser LOG     Stats Data Received: {"students_count":340,"subjects_count":50,"teachers_count":17}
+[00:22:55.619] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:55.619] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:55.619] Browser LOG     OverviewPage token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18
+[00:22:55.619] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzOTE2NDYwLCJpYXQiOjE3NjM5MTYxNjAsImp0aSI6Ijc2YjJiZWM0YzJjNzQ1OGViYTQ4NmEwYWJhZmIzMjFmIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJOaWdodEhhcmJvckBleGFtcGxlLmNvbSJ9.x2VlMusLkq1gWGDdp6c8m8uNy1-494DNZdfsCIOH-18

@@ -18,19 +18,25 @@ export function OverviewPage({ token }: OverviewPageProps) {
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
 
+  console.log("OverviewPage token:", token)
+  console.log(token)
+
   useEffect(() => {
     if (!token) return
 
     const fetchStats = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/admin/stats", {
+        const response = await fetch("http://127.0.0.1:8000/api/admin/stats/", {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
           },
         })
 
         if (response.ok) {
           const data = await response.json()
+          console.log("Stats Data Received:", data)
           setStats(data)
         }
       } catch (err) {
@@ -68,7 +74,7 @@ export function OverviewPage({ token }: OverviewPageProps) {
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground">Overview</h1>
-        <p className="text-muted-foreground mt-1">Welcome to ClessLens Admin Panel</p>
+        <p className="text-muted-foreground mt-1">Welcome to ClassLens Admin Panel</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

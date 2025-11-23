@@ -203,6 +203,100 @@ function CardFooter({ className, ...props }) {
 "[project]/components/auth/login-form.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// "use client"
+// import type React from "react"
+// import { useState } from "react"
+// import { Button } from "@/components/ui/button"
+// import { Input } from "@/components/ui/input"
+// import { Card } from "@/components/ui/card"
+// import { AlertCircle } from "lucide-react"
+// interface LoginFormProps {
+//   onLogin: (token: string) => void
+// }
+// export function LoginForm({ onLogin }: LoginFormProps) {
+//   const [username, setUsername] = useState("")
+//   const [password, setPassword] = useState("")
+//   const [error, setError] = useState("")
+//   const [loading, setLoading] = useState(false)
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault()
+//     setError("")
+//     setLoading(true)
+//     try {
+//       const response = await fetch("http://127.0.0.1:8000/api/admin/login/", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ username, password }),
+//       })
+//       const data = await response.json()
+//       if (!response.ok) {
+//         setError(data.error || "Login failed")
+//         return
+//       }
+//       if (data.access) {
+//         onLogin(data.access)
+//       } else {
+//         setError("No token received")
+//       }
+//     } catch (err) {
+//       setError("Network error. Check if backend is running.")
+//     } finally {
+//       setLoading(false)
+//     }
+//   }
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted flex items-center justify-center p-4">
+//       <div className="w-full max-w-md">
+//         <div className="text-center mb-8">
+//           <h1 className="text-3xl font-bold text-foreground mb-2">ClassLens</h1>
+//           <p className="text-muted-foreground">Education Management System</p>
+//         </div>
+//         <Card className="p-6 shadow-lg">
+//           <form onSubmit={handleSubmit} className="space-y-4">
+//             <div>
+//               <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
+//               <Input
+//                 type="email"
+//                 placeholder="admin@example.com"
+//                 value={username}
+//                 onChange={(e) => setUsername(e.target.value)}
+//                 required
+//                 disabled={loading}
+//                 className="w-full"
+//               />
+//             </div>
+//             <div>
+//               <label className="block text-sm font-medium text-foreground mb-1.5">Password</label>
+//               <Input
+//                 type="password"
+//                 placeholder="••••••••"
+//                 value={password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 required
+//                 disabled={loading}
+//                 className="w-full"
+//               />
+//             </div>
+//             {error && (
+//               <div className="flex gap-2 items-start p-3 bg-destructive/10 text-destructive rounded-md text-sm">
+//                 <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+//                 <span>{error}</span>
+//               </div>
+//             )}
+//             <Button type="submit" disabled={loading} className="w-full">
+//               {loading ? "Signing in..." : "Sign in"}
+//             </Button>
+//           </form>
+//           <div className="mt-6 pt-6 border-t border-border">
+//             <p className="text-xs text-muted-foreground text-center">Demo credentials: admin@example.com / password</p>
+//           </div>
+//         </Card>
+//       </div>
+//     </div>
+//   )
+// }
 __turbopack_context__.s([
     "LoginForm",
     ()=>LoginForm
@@ -213,6 +307,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/input.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-ssr] (ecmascript) <export default as AlertCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserPlus$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/user-plus.js [app-ssr] (ecmascript) <export default as UserPlus>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/log-in.js [app-ssr] (ecmascript) <export default as LogIn>");
 "use client";
 ;
 ;
@@ -221,34 +317,60 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 ;
 function LoginForm({ onLogin }) {
-    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    // State to toggle between Login and Register views
+    const [isLogin, setIsLogin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("") // Acts as username
+    ;
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [successMsg, setSuccessMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setError("");
+        setSuccessMsg("");
         setLoading(true);
+        // API ENDPOINTS
+        // 1. Endpoint for getting the Token (Login)
+        const loginUrl = "http://127.0.0.1:8000/api/admin/login/";
+        // 2. Endpoint for Creating User (Register) - Matches your URL path
+        const registerUrl = "http://127.0.0.1:8000/api/admin/create-user/";
+        const url = isLogin ? loginUrl : registerUrl;
+        // PAYLOAD
+        // Your serializer expects 'username', so we map email to username here
+        const payload = {
+            username: email,
+            password: password
+        };
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/admin/login", {
+            const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
+                body: JSON.stringify(payload)
             });
             const data = await response.json();
             if (!response.ok) {
-                setError(data.detail || "Login failed");
+                // Handle errors (e.g., "username already exists")
+                const errorMsg = data.detail || data.username?.[0] || data.password?.[0] || "Action failed";
+                setError(errorMsg);
                 return;
             }
-            if (data.access_token) {
-                onLogin(data.access_token);
+            if (isLogin) {
+                // --- LOGIN SUCCESS ---
+                if (data.access) {
+                    onLogin(data.access);
+                } else {
+                    setError("No token received");
+                }
             } else {
-                setError("No token received");
+                // --- REGISTRATION SUCCESS ---
+                setSuccessMsg("Account created successfully! Please sign in.");
+                // Switch to login view automatically
+                setIsLogin(true);
+                // We keep the email filled in, but clear password for security
+                setPassword("");
             }
         } catch (err) {
             setError("Network error. Check if backend is running.");
@@ -266,24 +388,24 @@ function LoginForm({ onLogin }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             className: "text-3xl font-bold text-foreground mb-2",
-                            children: "ClessLens"
+                            children: "ClassLens"
                         }, void 0, false, {
                             fileName: "[project]/components/auth/login-form.tsx",
-                            lineNumber: 58,
+                            lineNumber: 204,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-muted-foreground",
-                            children: "Education Management System"
+                            children: isLogin ? "Education Management System" : "Create Admin Account"
                         }, void 0, false, {
                             fileName: "[project]/components/auth/login-form.tsx",
-                            lineNumber: 59,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/auth/login-form.tsx",
-                    lineNumber: 57,
+                    lineNumber: 203,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -300,7 +422,7 @@ function LoginForm({ onLogin }) {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 65,
+                                            lineNumber: 215,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -313,13 +435,13 @@ function LoginForm({ onLogin }) {
                                             className: "w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 66,
+                                            lineNumber: 216,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/login-form.tsx",
-                                    lineNumber: 64,
+                                    lineNumber: 214,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -329,7 +451,7 @@ function LoginForm({ onLogin }) {
                                             children: "Password"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 78,
+                                            lineNumber: 229,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -342,13 +464,13 @@ function LoginForm({ onLogin }) {
                                             className: "w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 79,
+                                            lineNumber: 230,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/login-form.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 228,
                                     columnNumber: 13
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -358,68 +480,119 @@ function LoginForm({ onLogin }) {
                                             className: "w-4 h-4 mt-0.5 flex-shrink-0"
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 244,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: error
                                         }, void 0, false, {
                                             fileName: "[project]/components/auth/login-form.tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 245,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/auth/login-form.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 243,
+                                    columnNumber: 15
+                                }, this),
+                                successMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex gap-2 items-start p-3 bg-green-500/10 text-green-600 rounded-md text-sm",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                            className: "w-4 h-4 mt-0.5 flex-shrink-0"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/auth/login-form.tsx",
+                                            lineNumber: 252,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            children: successMsg
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/auth/login-form.tsx",
+                                            lineNumber: 253,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/auth/login-form.tsx",
+                                    lineNumber: 251,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                     type: "submit",
                                     disabled: loading,
                                     className: "w-full",
-                                    children: loading ? "Signing in..." : "Sign in"
+                                    children: loading ? isLogin ? "Signing in..." : "Creating Account..." : isLogin ? "Sign in" : "Register"
                                 }, void 0, false, {
                                     fileName: "[project]/components/auth/login-form.tsx",
-                                    lineNumber: 97,
+                                    lineNumber: 258,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/auth/login-form.tsx",
-                            lineNumber: 63,
+                            lineNumber: 211,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-6 pt-6 border-t border-border",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-xs text-muted-foreground text-center",
-                                children: "Demo credentials: admin@example.com / password"
+                            className: "mt-6 pt-6 border-t border-border text-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                onClick: ()=>{
+                                    setIsLogin(!isLogin);
+                                    setError("");
+                                    setSuccessMsg("");
+                                },
+                                className: "text-sm text-primary hover:underline flex items-center justify-center gap-2 w-full",
+                                children: isLogin ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__UserPlus$3e$__["UserPlus"], {
+                                            className: "w-4 h-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/auth/login-form.tsx",
+                                            lineNumber: 279,
+                                            columnNumber: 19
+                                        }, this),
+                                        " Need an account? Register"
+                                    ]
+                                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$in$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogIn$3e$__["LogIn"], {
+                                            className: "w-4 h-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/auth/login-form.tsx",
+                                            lineNumber: 283,
+                                            columnNumber: 19
+                                        }, this),
+                                        " Already have an account? Login"
+                                    ]
+                                }, void 0, true)
                             }, void 0, false, {
                                 fileName: "[project]/components/auth/login-form.tsx",
-                                lineNumber: 103,
+                                lineNumber: 268,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/auth/login-form.tsx",
-                            lineNumber: 102,
+                            lineNumber: 267,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/auth/login-form.tsx",
-                    lineNumber: 62,
+                    lineNumber: 210,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/auth/login-form.tsx",
-            lineNumber: 56,
+            lineNumber: 202,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/auth/login-form.tsx",
-        lineNumber: 55,
+        lineNumber: 201,
         columnNumber: 5
     }, this);
 }
@@ -471,10 +644,10 @@ function Sidebar({ currentPage, onPageChange, isOpen }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             className: "text-lg font-bold text-primary",
-                            children: "ClessLens"
+                            children: "ClassLens"
                         }, void 0, false, {
                             fileName: "[project]/components/dashboard/sidebar.tsx",
-                            lineNumber: 28,
+                            lineNumber: 27,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -482,13 +655,13 @@ function Sidebar({ currentPage, onPageChange, isOpen }) {
                             children: "Admin Panel"
                         }, void 0, false, {
                             fileName: "[project]/components/dashboard/sidebar.tsx",
-                            lineNumber: 29,
+                            lineNumber: 28,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dashboard/sidebar.tsx",
-                    lineNumber: 27,
+                    lineNumber: 26,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -504,32 +677,32 @@ function Sidebar({ currentPage, onPageChange, isOpen }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dashboard/sidebar.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 43,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: item.label
                                 }, void 0, false, {
                                     fileName: "[project]/components/dashboard/sidebar.tsx",
-                                    lineNumber: 46,
+                                    lineNumber: 44,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, item.id, true, {
                             fileName: "[project]/components/dashboard/sidebar.tsx",
-                            lineNumber: 38,
+                            lineNumber: 37,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/dashboard/sidebar.tsx",
-                    lineNumber: 32,
+                    lineNumber: 31,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/dashboard/sidebar.tsx",
-            lineNumber: 26,
+            lineNumber: 25,
             columnNumber: 7
         }, this)
     }, void 0, false, {
@@ -1861,8 +2034,8 @@ function StudentForm({ token, student, onClose }) {
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         name: "",
         email: "",
-        roll_number: "",
-        class: ""
+        prn: "",
+        year: ""
     });
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
@@ -1871,8 +2044,8 @@ function StudentForm({ token, student, onClose }) {
             setFormData({
                 name: student.name,
                 email: student.email,
-                roll_number: student.roll_number,
-                class: student.class
+                prn: student.prn,
+                year: Number(student.year).toString()
             });
         }
     }, [
@@ -1883,7 +2056,7 @@ function StudentForm({ token, student, onClose }) {
         setError("");
         setLoading(true);
         try {
-            const url = student ? `http://127.0.0.1:8000/api/admin/students/${student.id}` : "http://127.0.0.1:8000/api/admin/students";
+            const url = student ? `http://127.0.0.1:8000/api/admin/students/${student.id}/` : "http://127.0.0.1:8000/api/admin/students/";
             const method = student ? "PUT" : "POST";
             const response = await fetch(url, {
                 method,
@@ -1916,7 +2089,7 @@ function StudentForm({ token, student, onClose }) {
                         children: student ? "Edit Student" : "Add New Student"
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                        lineNumber: 76,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1926,18 +2099,18 @@ function StudentForm({ token, student, onClose }) {
                             className: "w-5 h-5"
                         }, void 0, false, {
                             fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                            lineNumber: 78,
+                            lineNumber: 89,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                        lineNumber: 77,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                lineNumber: 75,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1954,7 +2127,7 @@ function StudentForm({ token, student, onClose }) {
                                         children: "Name"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 96,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1966,13 +2139,13 @@ function StudentForm({ token, student, onClose }) {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 99,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 84,
+                                lineNumber: 95,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1982,7 +2155,7 @@ function StudentForm({ token, student, onClose }) {
                                         children: "Email"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 93,
+                                        lineNumber: 108,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1995,13 +2168,13 @@ function StudentForm({ token, student, onClose }) {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 111,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 92,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2011,24 +2184,24 @@ function StudentForm({ token, student, onClose }) {
                                         children: "Roll Number"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 121,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                        value: formData.roll_number,
+                                        value: formData.prn,
                                         onChange: (e)=>setFormData({
                                                 ...formData,
-                                                roll_number: e.target.value
+                                                prn: e.target.value
                                             })
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 124,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 101,
+                                lineNumber: 120,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2038,30 +2211,30 @@ function StudentForm({ token, student, onClose }) {
                                         children: "Class"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 132,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                        value: formData.class,
+                                        value: formData.year,
                                         onChange: (e)=>setFormData({
                                                 ...formData,
-                                                class: e.target.value
+                                                year: e.target.value
                                             })
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                        lineNumber: 110,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 108,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                        lineNumber: 83,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2069,7 +2242,7 @@ function StudentForm({ token, student, onClose }) {
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                        lineNumber: 114,
+                        lineNumber: 144,
                         columnNumber: 19
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2081,7 +2254,7 @@ function StudentForm({ token, student, onClose }) {
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 117,
+                                lineNumber: 147,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2090,25 +2263,25 @@ function StudentForm({ token, student, onClose }) {
                                 children: loading ? "Saving..." : "Save Student"
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                                lineNumber: 120,
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                        lineNumber: 116,
+                        lineNumber: 146,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/forms/student-form.tsx",
-                lineNumber: 82,
+                lineNumber: 93,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/dashboard/forms/student-form.tsx",
-        lineNumber: 74,
+        lineNumber: 80,
         columnNumber: 5
     }, this);
 }
@@ -2144,11 +2317,19 @@ function StudentsPage({ token }) {
     const [students, setStudents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [search, setSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [yearFilter, setYearFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("") // "" means all
+    ;
+    const [deptFilter, setDeptFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("") // "" means all
+    ;
+    const [departments, setDepartments] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [editingStudent, setEditingStudent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [showForm, setShowForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showBulkUpload, setShowBulkUpload] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         fetchStudents();
+        // fetch departments for department/class filter
+        fetchDepartments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         token
     ]);
@@ -2156,14 +2337,26 @@ function StudentsPage({ token }) {
         if (!token) return;
         setLoading(true);
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/admin/students", {
+            // NOTE: router endpoints usually include trailing slash: /api/admin/students/
+            const response = await fetch("http://127.0.0.1:8000/api/admin/students/", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             if (response.ok) {
                 const data = await response.json();
-                setStudents(data);
+                // normalize year/prn types to strings/numbers consistently
+                const normalized = (data || []).map((s)=>({
+                        id: String(s.id ?? s.pk ?? s.student_id ?? ""),
+                        name: s.name ?? "",
+                        email: s.email ?? "",
+                        prn: String(s.prn ?? s.roll_number ?? s.roll_no ?? ""),
+                        year: s.year ?? s.class ?? s.year_of ?? "",
+                        department: s.department ?? s.department_id ?? s.department_name ?? null
+                    }));
+                setStudents(normalized);
+            } else {
+                console.error("Failed to fetch students", response.status);
             }
         } catch (err) {
             console.log("[v0] Students fetch error:", err);
@@ -2171,17 +2364,42 @@ function StudentsPage({ token }) {
             setLoading(false);
         }
     };
-    const handleDelete = async (id)=>{
+    const fetchDepartments = async ()=>{
         if (!token) return;
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/admin/students/${id}`, {
+            // use admin departments viewset (trailing slash)
+            const res = await fetch("http://127.0.0.1:8000/api/getDepartments/", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            // expect array of { id, name } or { pk, name }
+            const normalized = (data || []).map((d)=>({
+                    id: d.id ?? d.pk ?? d.department_id ?? d.pk,
+                    name: d.name ?? d.department_name ?? d.title ?? String(d)
+                }));
+            setDepartments(normalized);
+        } catch (err) {
+            console.error("failed to fetch departments", err);
+        }
+    };
+    const handleDelete = async (id)=>{
+        if (!token) return;
+        const confirmDelete = window.confirm("Are you sure you want to delete this student?");
+        if (!confirmDelete) return;
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/admin/students/${id}/`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             if (response.ok) {
-                setStudents(students.filter((s)=>s.id !== id));
+                setStudents((prev)=>prev.filter((s)=>s.id !== id));
+            } else {
+                console.error("Delete failed", response.status);
             }
         } catch (err) {
             console.log("[v0] Delete error:", err);
@@ -2192,7 +2410,41 @@ function StudentsPage({ token }) {
         setEditingStudent(null);
         fetchStudents();
     };
-    const filteredStudents = students.filter((s)=>s.name.toLowerCase().includes(search.toLowerCase()) || s.email.toLowerCase().includes(search.toLowerCase()));
+    // Combined filtering & search (client-side)
+    const filteredStudents = students.filter((s)=>{
+        // year filter
+        if (yearFilter) {
+            const sy = String(s.year ?? "").toLowerCase();
+            if (sy !== String(yearFilter).toLowerCase()) return false;
+        }
+        // department filter
+        if (deptFilter) {
+            const df = String(deptFilter);
+            const dept = s.department;
+            if (dept == null) return false;
+            if (typeof dept === "number" || /^\d+$/.test(String(dept))) {
+                // compare numeric id
+                if (String(dept) !== df) return false;
+            } else if (typeof dept === "string") {
+                if (!dept.toLowerCase().includes(df.toLowerCase())) return false;
+            } else if (typeof dept === "object" && dept.name) {
+                if (String(dept.id) === df) {
+                // ok (matches id)
+                } else if (!String(dept.name).toLowerCase().includes(df.toLowerCase())) {
+                    return false;
+                }
+            }
+        }
+        // search (name, email, prn)
+        if (search && search.trim() !== "") {
+            const q = search.toLowerCase().trim();
+            const nameMatch = s.name?.toLowerCase().includes(q);
+            const emailMatch = s.email?.toLowerCase().includes(q);
+            const prnMatch = String(s.prn ?? "").toLowerCase().includes(q);
+            return nameMatch || emailMatch || prnMatch;
+        }
+        return true;
+    });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2205,7 +2457,7 @@ function StudentsPage({ token }) {
                                 children: "Students"
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                lineNumber: 86,
+                                lineNumber: 170,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2213,13 +2465,13 @@ function StudentsPage({ token }) {
                                 children: "Manage student records"
                             }, void 0, false, {
                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                lineNumber: 87,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                        lineNumber: 85,
+                        lineNumber: 169,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2234,14 +2486,14 @@ function StudentsPage({ token }) {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 175,
                                         columnNumber: 13
                                     }, this),
                                     "Bulk Upload"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                lineNumber: 90,
+                                lineNumber: 174,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2255,26 +2507,26 @@ function StudentsPage({ token }) {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 185,
                                         columnNumber: 13
                                     }, this),
                                     "Add Student"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                lineNumber: 94,
+                                lineNumber: 178,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                        lineNumber: 89,
+                        lineNumber: 173,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                lineNumber: 84,
+                lineNumber: 168,
                 columnNumber: 7
             }, this),
             showForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$forms$2f$student$2d$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StudentForm"], {
@@ -2283,7 +2535,7 @@ function StudentsPage({ token }) {
                 onClose: handleFormClose
             }, void 0, false, {
                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                lineNumber: 107,
+                lineNumber: 191,
                 columnNumber: 20
             }, this),
             showBulkUpload && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$dialogs$2f$bulk$2d$upload$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BulkUploadDialog"], {
@@ -2295,26 +2547,129 @@ function StudentsPage({ token }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                lineNumber: 110,
+                lineNumber: 194,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-6 border-b border-border",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                            placeholder: "Search by name or email...",
-                            value: search,
-                            onChange: (e)=>setSearch(e.target.value),
-                            className: "max-w-sm"
-                        }, void 0, false, {
-                            fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                            lineNumber: 122,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
+                        className: "p-6 border-b border-border flex flex-col md:flex-row md:items-center md:justify-between gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-3",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                        placeholder: "Search by name, email or roll number...",
+                                        value: search,
+                                        onChange: (e)=>setSearch(e.target.value),
+                                        className: "max-w-svw"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                        lineNumber: 207,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                        value: yearFilter,
+                                        onChange: (e)=>setYearFilter(e.target.value),
+                                        className: "p-2 border rounded",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "",
+                                                children: "All Years"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 220,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "1",
+                                                children: "Year 1"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 221,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "2",
+                                                children: "Year 2"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 222,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "3",
+                                                children: "Year 3"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 223,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "4",
+                                                children: "Year 4"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 224,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                        lineNumber: 215,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                        value: String(deptFilter ?? ""),
+                                        onChange: (e)=>setDeptFilter(e.target.value),
+                                        className: "p-2 border rounded max-w-xl",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "",
+                                                children: "All Departments"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 233,
+                                                columnNumber: 15
+                                            }, this),
+                                            departments.map((d)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                    value: d.id,
+                                                    children: d.name
+                                                }, d.id, false, {
+                                                    fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                    lineNumber: 235,
+                                                    columnNumber: 17
+                                                }, this))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                        lineNumber: 228,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                lineNumber: 206,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-sm text-muted-foreground",
+                                children: [
+                                    "Showing ",
+                                    filteredStudents.length,
+                                    " of ",
+                                    students.length,
+                                    " students"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                lineNumber: 243,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                        lineNumber: 121,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2331,7 +2686,7 @@ function StudentsPage({ token }) {
                                                 children: "Name"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                lineNumber: 134,
+                                                lineNumber: 250,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2339,7 +2694,7 @@ function StudentsPage({ token }) {
                                                 children: "Email"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 251,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2347,15 +2702,23 @@ function StudentsPage({ token }) {
                                                 children: "Roll Number"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 252,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left p-6 font-semibold text-foreground",
-                                                children: "Class"
+                                                children: "Year"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                lineNumber: 137,
+                                                lineNumber: 253,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                className: "text-left p-6 font-semibold text-foreground",
+                                                children: "Department"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                lineNumber: 254,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -2363,48 +2726,48 @@ function StudentsPage({ token }) {
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 255,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 249,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 248,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                     children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            colSpan: 5,
+                                            colSpan: 6,
                                             className: "p-6 text-center text-muted-foreground",
                                             children: "Loading..."
                                         }, void 0, false, {
                                             fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 261,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                        lineNumber: 143,
+                                        lineNumber: 260,
                                         columnNumber: 17
                                     }, this) : filteredStudents.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            colSpan: 5,
+                                            colSpan: 6,
                                             className: "p-6 text-center text-muted-foreground",
                                             children: "No students found"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                            lineNumber: 150,
+                                            lineNumber: 267,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                        lineNumber: 149,
+                                        lineNumber: 266,
                                         columnNumber: 17
                                     }, this) : filteredStudents.map((student)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                             className: "border-b border-border hover:bg-muted/50 transition",
@@ -2414,7 +2777,7 @@ function StudentsPage({ token }) {
                                                     children: student.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                    lineNumber: 157,
+                                                    lineNumber: 274,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2422,23 +2785,31 @@ function StudentsPage({ token }) {
                                                     children: student.email
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 275,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "p-6 text-muted-foreground",
-                                                    children: student.roll_number
+                                                    children: student.prn
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 276,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "p-6 text-muted-foreground",
-                                                    children: student.class
+                                                    children: student.year
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                    lineNumber: 160,
+                                                    lineNumber: 277,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                    className: "p-6 text-muted-foreground",
+                                                    children: typeof student.department === "object" ? student.department.name ?? student.department.id : String(student.department ?? "")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/dashboard/pages/students-page.tsx",
+                                                    lineNumber: 278,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -2458,12 +2829,12 @@ function StudentsPage({ token }) {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                                    lineNumber: 172,
+                                                                    lineNumber: 294,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                                lineNumber: 163,
+                                                                lineNumber: 285,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2475,57 +2846,57 @@ function StudentsPage({ token }) {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                                    lineNumber: 180,
+                                                                    lineNumber: 302,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                                lineNumber: 174,
+                                                                lineNumber: 296,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                        lineNumber: 162,
+                                                        lineNumber: 284,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 283,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, student.id, true, {
                                             fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                            lineNumber: 156,
+                                            lineNumber: 273,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                                    lineNumber: 141,
+                                    lineNumber: 258,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                            lineNumber: 131,
+                            lineNumber: 247,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                        lineNumber: 130,
+                        lineNumber: 246,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/pages/students-page.tsx",
-                lineNumber: 120,
+                lineNumber: 204,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/dashboard/pages/students-page.tsx",
-        lineNumber: 83,
+        lineNumber: 167,
         columnNumber: 5
     }, this);
 }
@@ -3198,17 +3569,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 function OverviewPage({ token }) {
     const [stats, setStats] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    console.log("OverviewPage token:", token);
+    console.log(token);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (!token) return;
         const fetchStats = async ()=>{
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/admin/stats", {
+                const response = await fetch("http://127.0.0.1:8000/api/admin/stats/", {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
                     }
                 });
                 if (response.ok) {
                     const data = await response.json();
+                    console.log("Stats Data Received:", data);
                     setStats(data);
                 }
             } catch (err) {
@@ -3251,21 +3627,21 @@ function OverviewPage({ token }) {
                         children: "Overview"
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                        lineNumber: 70,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-muted-foreground mt-1",
-                        children: "Welcome to ClessLens Admin Panel"
+                        children: "Welcome to ClassLens Admin Panel"
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                        lineNumber: 71,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                lineNumber: 69,
+                lineNumber: 75,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3284,7 +3660,7 @@ function OverviewPage({ token }) {
                                             children: stat.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                                            lineNumber: 81,
+                                            lineNumber: 87,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3292,13 +3668,13 @@ function OverviewPage({ token }) {
                                             children: loading ? "-" : stat.count
                                         }, void 0, false, {
                                             fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                                            lineNumber: 82,
+                                            lineNumber: 88,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                                    lineNumber: 80,
+                                    lineNumber: 86,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3307,29 +3683,29 @@ function OverviewPage({ token }) {
                                         className: "w-6 h-6"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                                        lineNumber: 85,
+                                        lineNumber: 91,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                                    lineNumber: 84,
+                                    lineNumber: 90,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                            lineNumber: 79,
+                            lineNumber: 85,
                             columnNumber: 15
                         }, this)
                     }, stat.title, false, {
                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                        lineNumber: 78,
+                        lineNumber: 84,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                lineNumber: 74,
+                lineNumber: 80,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -3340,7 +3716,7 @@ function OverviewPage({ token }) {
                         children: "Quick Actions"
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                        lineNumber: 94,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3348,19 +3724,19 @@ function OverviewPage({ token }) {
                         children: "Use the sidebar to navigate to Teachers, Students, or Subjects sections to manage your institution's data."
                     }, void 0, false, {
                         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                        lineNumber: 95,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-                lineNumber: 93,
+                lineNumber: 99,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/dashboard/pages/overview-page.tsx",
-        lineNumber: 68,
+        lineNumber: 74,
         columnNumber: 5
     }, this);
 }
@@ -3485,7 +3861,7 @@ function Dashboard({ adminToken, onLogout }) {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                         className: "text-xl font-semibold text-foreground",
-                                        children: "ClessLens"
+                                        children: "ClassLens"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dashboard/dashboard.tsx",
                                         lineNumber: 59,
@@ -3569,8 +3945,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$dashboard$2f$d
 ;
 ;
 function Home() {
-    const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [adminToken, setAdminToken] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("jijijerg");
+    const [isAuthenticated, setIsAuthenticated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [adminToken, setAdminToken] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const handleLogin = (token)=>{
         setAdminToken(token);
         setIsAuthenticated(true);

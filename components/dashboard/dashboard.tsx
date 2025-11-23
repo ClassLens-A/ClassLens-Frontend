@@ -56,7 +56,7 @@ export function Dashboard({ adminToken, onLogout }: DashboardProps) {
             >
               {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-            <h1 className="text-xl font-semibold text-foreground">ClessLens</h1>
+            <h1 className="text-xl font-semibold text-foreground">ClassLens</h1>
           </div>
           <Button variant="outline" size="sm" onClick={onLogout} className="flex items-center gap-2 bg-transparent">
             <LogOut className="w-4 h-4" />

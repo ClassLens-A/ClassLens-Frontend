@@ -28,7 +28,7 @@ export function Sidebar({ currentPage, onPageChange, isOpen }: SidebarProps) {
     >
       <div className="p-6">
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-primary">ClessLens</h2>
+          <h2 className="text-lg font-bold text-primary">ClassLens</h2>
           <p className="text-xs text-muted-foreground">Admin Panel</p>
         </div>
 

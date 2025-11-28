@@ -1,57 +1,62 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plus, Pencil, Trash2, Upload } from "lucide-react"
-import { SubjectFromDeptForm } from "../forms/subject-from-dept-form"
-import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog"
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Plus, Pencil, Trash2, Upload } from "lucide-react";
+import { SubjectFromDeptForm } from "../forms/subject-from-dept-form";
+import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog";
 
 interface SubjectFromDeptPageProps {
-  token: string | null
+  token: string | null;
 }
 
 interface SubjectDetail {
-  id: number
-  code: string
-  name: string
+  id: number;
+  code: string;
+  name: string;
 }
 
 interface SubjectFromDept {
-  id: number
-  department: number
-  department_name: string
-  year: number
-  semester: number
-  subject_details: SubjectDetail[]
+  id: number;
+  department: number;
+  department_name: string;
+  year: number;
+  semester: number;
+  subject_details: SubjectDetail[];
 }
 
 export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
-  const [mappings, setMappings] = useState<SubjectFromDept[]>([])
-  const [loading, setLoading] = useState(true)
-  const [search, setSearch] = useState("")
-  const [editingMapping, setEditingMapping] = useState<SubjectFromDept | null>(null)
-  const [showForm, setShowForm] = useState(false)
-  const [showBulkUpload, setShowBulkUpload] = useState(false)
+  const [mappings, setMappings] = useState<SubjectFromDept[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [editingMapping, setEditingMapping] = useState<SubjectFromDept | null>(
+    null
+  );
+  const [showForm, setShowForm] = useState(false);
+  const [showBulkUpload, setShowBulkUpload] = useState(false);
 
   useEffect(() => {
-    if (!token) return
-    fetchMappings()
+    if (!token) return;
+    fetchMappings();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const fetchMappings = async () => {
-    if (!token) return
-    setLoading(true)
+    if (!token) return;
+    setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/subject-from-dept/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/subject-from-dept/",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
 
         // Normalize into our TS interface shape
         const normalized: SubjectFromDept[] = (data || []).map((item: any) => ({
@@ -67,74 +72,87 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
                 name: s.name,
               }))
             : [],
-        }))
+        }));
 
-        setMappings(normalized)
+        setMappings(normalized);
       } else {
-        console.error("Failed to fetch subject-from-dept mappings:", response.status)
+        console.error(
+          "Failed to fetch subject-from-dept mappings:",
+          response.status
+        );
       }
     } catch (err) {
-      console.log("[v0] Subject from dept fetch error:", err)
+      console.log("[v0] Subject from dept fetch error:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleDelete = async (id: number) => {
-    if (!token) return
+    if (!token) return;
 
-    const confirmDelete = window.confirm("Are you sure you want to delete this mapping?")
-    if (!confirmDelete) return
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this mapping?"
+    );
+    if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/admin/subject-from-dept/${id}/`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/api/admin/subject-from-dept/${id}/`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
-        setMappings((prev) => prev.filter((m) => m.id !== id))
+        setMappings((prev) => prev.filter((m) => m.id !== id));
       } else {
-        console.error("Delete failed:", response.status)
-        const text = await response.text().catch(() => "")
-        alert(`Delete failed: ${response.status} ${text}`)
+        console.error("Delete failed:", response.status);
+        const text = await response.text().catch(() => "");
+        alert(`Delete failed: ${response.status} ${text}`);
       }
     } catch (err) {
-      console.log("[v0] Delete error:", err)
-      alert("Network error while deleting")
+      console.log("[v0] Delete error:", err);
+      alert("Network error while deleting");
     }
-  }
+  };
 
   const handleFormClose = () => {
-    setShowForm(false)
-    setEditingMapping(null)
-    fetchMappings()
-  }
+    setShowForm(false);
+    setEditingMapping(null);
+    fetchMappings();
+  };
 
   // search in department_name and subject_details (code + name)
   const filteredMappings = mappings.filter((m) => {
-    if (!search.trim()) return true
+    if (!search.trim()) return true;
 
-    const q = search.toLowerCase().trim()
+    const q = search.toLowerCase().trim();
 
-    const deptMatch = m.department_name.toLowerCase().includes(q)
+    const deptMatch = m.department_name.toLowerCase().includes(q);
 
     const subjectsText = m.subject_details
       .map((s) => `${s.code} ${s.name}`)
       .join(" ")
-      .toLowerCase()
+      .toLowerCase();
 
-    const subjectMatch = subjectsText.includes(q)
+    const subjectMatch = subjectsText.includes(q);
 
-    return deptMatch || subjectMatch
-  })
+    return deptMatch || subjectMatch;
+  });
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Subject to Department</h1>
-          <p className="text-muted-foreground mt-1">Map subjects to departments, by year and semester</p>
+          <h1 className="text-3xl font-bold text-foreground">
+            Subject to Department
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            Map subjects to departments, by year and semester
+          </p>
         </div>
         <div className="flex gap-2">
           <Button
@@ -147,8 +165,8 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
           </Button>
           <Button
             onClick={() => {
-              setEditingMapping(null)
-              setShowForm(true)
+              setEditingMapping(null);
+              setShowForm(true);
             }}
             className="flex items-center gap-2"
           >
@@ -171,8 +189,8 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
           token={token}
           type="subject-from-dept"
           onClose={() => {
-            setShowBulkUpload(false)
-            fetchMappings()
+            setShowBulkUpload(false);
+            fetchMappings();
           }}
         />
       )}
@@ -191,23 +209,39 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
           <table className="w-full">
             <thead className="border-b border-border">
               <tr>
-                <th className="text-left p-6 font-semibold text-foreground">Department</th>
-                <th className="text-left p-6 font-semibold text-foreground">Year</th>
-                <th className="text-left p-6 font-semibold text-foreground">Semester</th>
-                <th className="text-left p-6 font-semibold text-foreground">Subjects</th>
-                <th className="text-right p-6 font-semibold text-foreground">Actions</th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Department
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Year
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Semester
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Subjects
+                </th>
+                <th className="text-right p-6 font-semibold text-foreground">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={5}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     Loading...
                   </td>
                 </tr>
               ) : filteredMappings.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={5}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     No mappings found
                   </td>
                 </tr>
@@ -220,8 +254,12 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
                     <td className="p-6 font-medium text-foreground">
                       {mapping.department_name}
                     </td>
-                    <td className="p-6 text-muted-foreground">{mapping.year}</td>
-                    <td className="p-6 text-muted-foreground">{mapping.semester}</td>
+                    <td className="p-6 text-muted-foreground">
+                      {mapping.year}
+                    </td>
+                    <td className="p-6 text-muted-foreground">
+                      {mapping.semester}
+                    </td>
                     <td className="p-6 text-muted-foreground">
                       {mapping.subject_details.length === 0
                         ? "-"
@@ -235,8 +273,8 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
                           variant="ghost"
                           size="sm"
                           onClick={() => {
-                            setEditingMapping(mapping)
-                            setShowForm(true)
+                            setEditingMapping(mapping);
+                            setShowForm(true);
                           }}
                           className="text-primary"
                         >
@@ -260,5 +298,5 @@ export function SubjectFromDeptPage({ token }: SubjectFromDeptPageProps) {
         </div>
       </Card>
     </div>
-  )
+  );
 }

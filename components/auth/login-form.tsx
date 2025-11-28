@@ -1,60 +1,65 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card } from "@/components/ui/card"
-import { AlertCircle } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { AlertCircle } from "lucide-react";
+import { log } from "console";
 
 interface LoginFormProps {
-  onLogin: (token: string) => void
+  onLogin: (token: string) => void;
 }
 
 export function LoginForm({ onLogin }: LoginFormProps) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      })
+      console.log("Backend URL:", process.env.NEXT_PUBLIC_BACKEND_URL);
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
-      const data = await response.json().catch(() => ({}))
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setError(data.error || "Login failed")
-        return
+        setError(data.error || "Login failed");
+        return;
       }
 
       // backend returns: { access, refresh, username }
       if (data.access) {
-        onLogin(data.access)
+        onLogin(data.access);
         // if later you want, you can also store refresh & username in localStorage here
-        localStorage.setItem("refresh_token", data.refresh)
-        localStorage.setItem("admin_username", data.username)
+        localStorage.setItem("refresh_token", data.refresh);
+        localStorage.setItem("admin_username", data.username);
       } else {
-        setError("No access token received from server")
+        setError("No access token received from server");
       }
     } catch (err) {
-      console.error("Login error:", err)
-      setError("Network error. Check if backend is running.")
+      console.error("Login error:", err);
+      setError("Network error. Check if backend is running.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted flex items-center justify-center p-4">
@@ -110,11 +115,12 @@ export function LoginForm({ onLogin }: LoginFormProps) {
 
           <div className="mt-6 pt-6 border-t border-border">
             <p className="text-xs text-muted-foreground text-center">
-              Demo credentials: <code>admin</code> / <code>password</code> (or whatever you set in DB)
+              Demo credentials: <code>admin</code> / <code>password</code> (or
+              whatever you set in DB)
             </p>
           </div>
         </Card>
       </div>
     </div>
-  )
+  );
 }

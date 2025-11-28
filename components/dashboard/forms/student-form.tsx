@@ -50,7 +50,7 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
         department:
           typeof student.department === "object"
             ? (student.department as any).id ?? ""
-            : (student.department ?? "") as string | number,
+            : ((student.department ?? "") as string | number),
       });
     }
   }, [student]);
@@ -60,13 +60,16 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
     const fetchDepts = async () => {
       setDeptsLoading(true);
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/getDepartments/", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-        });
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_BACKEND_URL + "/api/getDepartments/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            },
+          }
+        );
         if (!res.ok) {
           console.warn("Failed to fetch departments", res.status);
           setDepartments([]);
@@ -80,7 +83,11 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
         setDepartments(normalized);
 
         // If student.department was a string name, try to select matching id
-        if (student && student.department && typeof student.department === "string") {
+        if (
+          student &&
+          student.department &&
+          typeof student.department === "string"
+        ) {
           const found = normalized.find((x) => x.name === student.department);
           if (found) setFormData((s) => ({ ...s, department: found.id }));
         }
@@ -103,8 +110,9 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
 
     try {
       const url = student
-        ? `http://127.0.0.1:8000/api/admin/students/${student.id}/`
-        : "http://127.0.0.1:8000/api/admin/students/";
+        ? process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/api/admin/students/${student.id}/`
+        : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/students/";
 
       const method = student ? "PUT" : "POST";
 
@@ -118,7 +126,9 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
       if (formData.department !== "" && formData.department != null) {
         // ensure department is numeric id
         const deptId = Number(formData.department);
-        payload.department = Number.isNaN(deptId) ? formData.department : deptId;
+        payload.department = Number.isNaN(deptId)
+          ? formData.department
+          : deptId;
       }
 
       const response = await fetch(url, {
@@ -181,7 +191,10 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
         <h2 className="text-xl font-semibold text-foreground">
           {student ? "Edit Student" : "Add New Student"}
         </h2>
-        <button onClick={onClose} className="text-muted-foreground hover:text-foreground">
+        <button
+          onClick={onClose}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <X className="w-5 h-5" />
         </button>
       </div>
@@ -189,48 +202,68 @@ export function StudentForm({ token, student, onClose }: StudentFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Name</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Name
+            </label>
             <Input
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Email</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Email
+            </label>
             <Input
               type="email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Roll Number</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Roll Number
+            </label>
             <Input
               value={formData.prn}
-              onChange={(e) => setFormData({ ...formData, prn: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, prn: e.target.value })
+              }
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Class (Year)</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Class (Year)
+            </label>
             <Input
               value={formData.year}
-              onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, year: e.target.value })
+              }
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Department</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Department
+            </label>
             {deptsLoading ? (
               <Input value="Loading departments…" disabled />
             ) : (
               <select
                 value={String(formData.department ?? "")}
-                onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, department: e.target.value })
+                }
                 className="w-full p-2 border rounded"
                 required
               >

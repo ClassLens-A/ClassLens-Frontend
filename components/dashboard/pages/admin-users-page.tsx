@@ -1,91 +1,101 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plus, Pencil, Trash2 } from "lucide-react"
-import { AdminUserForm } from "../forms/admin-user-form"
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Plus, Pencil, Trash2 } from "lucide-react";
+import { AdminUserForm } from "../forms/admin-user-form";
 
 interface AdminUsersPageProps {
-  token: string | null
+  token: string | null;
 }
 
 interface AdminUser {
-  id: string
-  username: string
-  is_active: boolean
+  id: string;
+  username: string;
+  is_active: boolean;
 }
 
 export function AdminUsersPage({ token }: AdminUsersPageProps) {
-  const [admins, setAdmins] = useState<AdminUser[]>([])
-  const [loading, setLoading] = useState(true)
-  const [search, setSearch] = useState("")
-  const [editingAdmin, setEditingAdmin] = useState<AdminUser | null>(null)
-  const [showForm, setShowForm] = useState(false)
+  const [admins, setAdmins] = useState<AdminUser[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [editingAdmin, setEditingAdmin] = useState<AdminUser | null>(null);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    fetchAdmins()
-  }, [token])
+    fetchAdmins();
+  }, [token]);
 
   const fetchAdmins = async () => {
-    if (!token) return
-    setLoading(true)
+    if (!token) return;
+    setLoading(true);
 
-    console.log("Fetching admins with token:", token) 
+    console.log("Fetching admins with token:", token);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/admin-users/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/admin-users/",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
-        const data = await response.json()
-        setAdmins(data)
+        const data = await response.json();
+        setAdmins(data);
       }
     } catch (err) {
-      console.log("[v0] Admins fetch error:", err)
+      console.log("[v0] Admins fetch error:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleDelete = async (id: string) => {
-    if (!token) return
+    if (!token) return;
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/admin/admin-users/${id}/`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + `/api/admin/admin-users/${id}/`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
-        setAdmins(admins.filter((a) => a.id !== id))
+        setAdmins(admins.filter((a) => a.id !== id));
       }
     } catch (err) {
-      console.log("[v0] Delete error:", err)
+      console.log("[v0] Delete error:", err);
     }
-  }
+  };
 
   const handleFormClose = () => {
-    setShowForm(false)
-    setEditingAdmin(null)
-    fetchAdmins()
-  }
+    setShowForm(false);
+    setEditingAdmin(null);
+    fetchAdmins();
+  };
 
-  const filteredAdmins = admins.filter((a) => a.username.toLowerCase().includes(search.toLowerCase()))
+  const filteredAdmins = admins.filter((a) =>
+    a.username.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Admin Users</h1>
-          <p className="text-muted-foreground mt-1">Manage administrator accounts</p>
+          <p className="text-muted-foreground mt-1">
+            Manage administrator accounts
+          </p>
         </div>
         <Button
           onClick={() => {
-            setEditingAdmin(null)
-            setShowForm(true)
+            setEditingAdmin(null);
+            setShowForm(true);
           }}
           className="flex items-center gap-2"
         >
@@ -94,7 +104,13 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
         </Button>
       </div>
 
-      {showForm && <AdminUserForm token={token} admin={editingAdmin} onClose={handleFormClose} />}
+      {showForm && (
+        <AdminUserForm
+          token={token}
+          admin={editingAdmin}
+          onClose={handleFormClose}
+        />
+      )}
 
       <Card>
         <div className="p-6 border-b border-border">
@@ -110,28 +126,45 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
           <table className="w-full">
             <thead className="border-b border-border">
               <tr>
-                <th className="text-left p-6 font-semibold text-foreground">Username</th>
-                <th className="text-left p-6 font-semibold text-foreground">Status</th>
-                <th className="text-right p-6 font-semibold text-foreground">Actions</th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Username
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Status
+                </th>
+                <th className="text-right p-6 font-semibold text-foreground">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={4} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={4}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     Loading...
                   </td>
                 </tr>
               ) : filteredAdmins.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={4}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     No admin users found
                   </td>
                 </tr>
               ) : (
                 filteredAdmins.map((admin) => (
-                  <tr key={admin.id} className="border-b border-border hover:bg-muted/50 transition">
-                    <td className="p-6 font-medium text-foreground">{admin.username}</td>
+                  <tr
+                    key={admin.id}
+                    className="border-b border-border hover:bg-muted/50 transition"
+                  >
+                    <td className="p-6 font-medium text-foreground">
+                      {admin.username}
+                    </td>
                     <td className="p-6">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -149,8 +182,8 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
                           variant="ghost"
                           size="sm"
                           onClick={() => {
-                            setEditingAdmin(admin)
-                            setShowForm(true)
+                            setEditingAdmin(admin);
+                            setShowForm(true);
                           }}
                           className="text-primary"
                         >
@@ -174,5 +207,5 @@ export function AdminUsersPage({ token }: AdminUsersPageProps) {
         </div>
       </Card>
     </div>
-  )
+  );
 }

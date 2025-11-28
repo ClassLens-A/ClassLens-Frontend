@@ -1,47 +1,48 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 
 interface SubjectFormProps {
-  token: string | null
-  subject?: { id: string; name: string; code: string } | null
-  onClose: () => void
+  token: string | null;
+  subject?: { id: string; name: string; code: string } | null;
+  onClose: () => void;
 }
 
 export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     code: "",
-  })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (subject) {
       setFormData({
         name: subject.name,
         code: subject.code,
-      })
+      });
     }
-  }, [subject])
+  }, [subject]);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
       const url = subject
-        ? `http://127.0.0.1:8000/api/admin/subjects/${subject.id}/`
-        : "http://127.0.0.1:8000/api/admin/subjects/"
+        ? process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/api/admin/subjects/${subject.id}/`
+        : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/subjects/";
 
-      const method = subject ? "PUT" : "POST"
+      const method = subject ? "PUT" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -50,27 +51,32 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (!response.ok) {
-        const data = await response.json()
-        setError(data.detail || "Failed to save subject")
-        return
+        const data = await response.json();
+        setError(data.detail || "Failed to save subject");
+        return;
       }
 
-      onClose()
+      onClose();
     } catch (err) {
-      setError("Network error")
+      setError("Network error");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Card className="mb-6 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-foreground">{subject ? "Edit Subject" : "Add New Subject"}</h2>
-        <button onClick={onClose} className="text-muted-foreground hover:text-foreground">
+        <h2 className="text-xl font-semibold text-foreground">
+          {subject ? "Edit Subject" : "Add New Subject"}
+        </h2>
+        <button
+          onClick={onClose}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <X className="w-5 h-5" />
         </button>
       </div>
@@ -78,23 +84,30 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Name</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Name
+            </label>
             <Input
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Code</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Code
+            </label>
             <Input
               value={formData.code}
-              onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, code: e.target.value })
+              }
               required
             />
           </div>
         </div>
-       
 
         {error && <p className="text-sm text-destructive">{error}</p>}
 
@@ -108,5 +121,5 @@ export function SubjectForm({ token, subject, onClose }: SubjectFormProps) {
         </div>
       </form>
     </Card>
-  )
+  );
 }

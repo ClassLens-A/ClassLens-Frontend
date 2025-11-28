@@ -25,7 +25,11 @@ interface SubjectItem {
   name: string;
 }
 
-export function StudentEnrollmentForm({ token, enrollment, onClose }: StudentEnrollmentFormProps) {
+export function StudentEnrollmentForm({
+  token,
+  enrollment,
+  onClose,
+}: StudentEnrollmentFormProps) {
   const [subjects, setSubjects] = useState<SubjectItem[]>([]);
   const [formData, setFormData] = useState({
     student_prn: enrollment?.student_prn ? String(enrollment.student_prn) : "",
@@ -39,9 +43,12 @@ export function StudentEnrollmentForm({ token, enrollment, onClose }: StudentEnr
 
     const fetchSubjects = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/admin/subjects/", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/subjects/",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (!res.ok) return console.error("Failed to fetch subjects");
 
@@ -63,8 +70,9 @@ export function StudentEnrollmentForm({ token, enrollment, onClose }: StudentEnr
 
     const method = enrollment ? "PUT" : "POST";
     const url = enrollment
-      ? `http://127.0.0.1:8000/api/admin/student-enrollments/${enrollment.id}/`
-      : "http://127.0.0.1:8000/api/admin/student-enrollments/";
+      ? process.env.NEXT_PUBLIC_BACKEND_URL +
+        `/api/admin/student-enrollments/${enrollment.id}/`
+      : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/student-enrollments/";
 
     const payload = {
       student_prn: Number(formData.student_prn),
@@ -122,11 +130,15 @@ export function StudentEnrollmentForm({ token, enrollment, onClose }: StudentEnr
             )}
 
             <div>
-              <label className="block text-sm font-medium mb-2">Student PRN</label>
+              <label className="block text-sm font-medium mb-2">
+                Student PRN
+              </label>
               <Input
                 required
                 value={formData.student_prn}
-                onChange={(e) => setFormData({ ...formData, student_prn: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, student_prn: e.target.value })
+                }
                 placeholder="Enter PRN number"
                 disabled={!!enrollment}
               />
@@ -137,7 +149,9 @@ export function StudentEnrollmentForm({ token, enrollment, onClose }: StudentEnr
               <select
                 required
                 value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, subject: e.target.value })
+                }
                 className="w-full border rounded p-2 bg-background"
               >
                 <option value="">Select Subject</option>

@@ -1,83 +1,85 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plus, Pencil, Trash2, Upload } from "lucide-react"
-import { StudentForm } from "../forms/student-form"
-import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog"
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Plus, Pencil, Trash2, Upload } from "lucide-react";
+import { StudentForm } from "../forms/student-form";
+import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog";
 
 interface StudentsPageProps {
-  token: string | null
+  token: string | null;
 }
 
 interface Student {
-  id: string
-  name: string
-  email: string
-  prn: string
-  year: number | string
-  department?: number | string | null
-  department_name?: string | null
+  id: string;
+  name: string;
+  email: string;
+  prn: string;
+  year: number | string;
+  department?: number | string | null;
+  department_name?: string | null;
 }
 
 interface DepartmentItem {
-  id: number
-  name: string
+  id: number;
+  name: string;
 }
 
 export function StudentsPage({ token }: StudentsPageProps) {
-  const [students, setStudents] = useState<Student[]>([])
-  const [loading, setLoading] = useState(true)
-  const [search, setSearch] = useState("")
-  const [yearFilter, setYearFilter] = useState<string>("")
-  const [deptFilter, setDeptFilter] = useState<string | number>("")
-  const [departments, setDepartments] = useState<DepartmentItem[]>([])
-  const [editingStudent, setEditingStudent] = useState<Student | null>(null)
-  const [showForm, setShowForm] = useState(false)
-  const [showBulkUpload, setShowBulkUpload] = useState(false)
+  const [students, setStudents] = useState<Student[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [yearFilter, setYearFilter] = useState<string>("");
+  const [deptFilter, setDeptFilter] = useState<string | number>("");
+  const [departments, setDepartments] = useState<DepartmentItem[]>([]);
+  const [editingStudent, setEditingStudent] = useState<Student | null>(null);
+  const [showForm, setShowForm] = useState(false);
+  const [showBulkUpload, setShowBulkUpload] = useState(false);
 
   // pagination
-  const [page, setPage] = useState(1)
-  const [totalCount, setTotalCount] = useState(0)
-  const pageSize = 25 // should match StudentPagination.page_size on backend
+  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const pageSize = 25; // should match StudentPagination.page_size on backend
 
-  const totalPages = totalCount > 0 ? Math.ceil(totalCount / pageSize) : 1
+  const totalPages = totalCount > 0 ? Math.ceil(totalCount / pageSize) : 1;
 
   // fetch students whenever token or page changes
   useEffect(() => {
-    if (!token) return
-    fetchStudents(page)
+    if (!token) return;
+    fetchStudents(page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, page])
+  }, [token, page]);
 
   // fetch departments once per token
   useEffect(() => {
-    if (!token) return
-    fetchDepartments()
+    if (!token) return;
+    fetchDepartments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token])
+  }, [token]);
 
   const fetchStudents = async (pageToLoad: number) => {
-    if (!token) return
-    setLoading(true)
+    if (!token) return;
+    setLoading(true);
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/admin/students/?page=${pageToLoad}`,
+        process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/api/admin/students/?page=${pageToLoad}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
-      )
+      );
 
       if (response.ok) {
-        const json = await response.json()
+        const json = await response.json();
 
         // DRF pagination -> { count, results, next, previous }
-        const rawList = Array.isArray(json) ? json : json.results ?? []
-        const countFromApi = typeof json.count === "number" ? json.count : rawList.length
-        setTotalCount(countFromApi)
+        const rawList = Array.isArray(json) ? json : json.results ?? [];
+        const countFromApi =
+          typeof json.count === "number" ? json.count : rawList.length;
+        setTotalCount(countFromApi);
 
         const normalized: Student[] = rawList.map((s: any) => ({
           id: String(s.id ?? s.pk ?? s.student_id ?? ""),
@@ -90,111 +92,123 @@ export function StudentsPage({ token }: StudentsPageProps) {
             s.department_name ??
             s.department?.name ??
             (typeof s.department === "string" ? s.department : ""),
-        }))
+        }));
 
-        setStudents(normalized)
+        setStudents(normalized);
       } else {
-        console.error("Failed to fetch students", response.status)
+        console.error("Failed to fetch students", response.status);
       }
     } catch (err) {
-      console.log("[v0] Students fetch error:", err)
+      console.log("[v0] Students fetch error:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const fetchDepartments = async () => {
-    if (!token) return
+    if (!token) return;
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/getDepartments/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      if (!res.ok) return
-      const data = await res.json()
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/api/getDepartments/",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!res.ok) return;
+      const data = await res.json();
       const normalized = (data || []).map((d: any) => ({
         id: d.id ?? d.pk ?? d.department_id ?? d.pk,
         name: d.name ?? d.department_name ?? d.title ?? String(d),
-      }))
-      setDepartments(normalized)
+      }));
+      setDepartments(normalized);
     } catch (err) {
-      console.error("failed to fetch departments", err)
+      console.error("failed to fetch departments", err);
     }
-  }
+  };
 
   const handleDelete = async (id: string) => {
-    if (!token) return
+    if (!token) return;
 
-    const confirmDelete = window.confirm("Are you sure you want to delete this student?")
-    if (!confirmDelete) return
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this student?"
+    );
+    if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/admin/students/${id}/`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + `/api/admin/students/${id}/`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.ok) {
-        setStudents((prev) => prev.filter((s) => s.id !== id))
+        setStudents((prev) => prev.filter((s) => s.id !== id));
         // optionally, you can refetch the current page:
         // fetchStudents(page)
       } else {
-        console.error("Delete failed", response.status)
-        const text = await response.text().catch(() => "")
-        alert(`Delete failed: ${response.status} ${text}`)
+        console.error("Delete failed", response.status);
+        const text = await response.text().catch(() => "");
+        alert(`Delete failed: ${response.status} ${text}`);
       }
     } catch (err) {
-      console.log("[v0] Delete error:", err)
-      alert("Network error while deleting")
+      console.log("[v0] Delete error:", err);
+      alert("Network error while deleting");
     }
-  }
+  };
 
   const handleFormClose = () => {
-    setShowForm(false)
-    setEditingStudent(null)
-    fetchStudents(page)
-  }
+    setShowForm(false);
+    setEditingStudent(null);
+    fetchStudents(page);
+  };
 
   const filteredStudents = students.filter((s) => {
     if (yearFilter) {
-      const sy = String(s.year ?? "").toLowerCase()
-      if (sy !== String(yearFilter).toLowerCase()) return false
+      const sy = String(s.year ?? "").toLowerCase();
+      if (sy !== String(yearFilter).toLowerCase()) return false;
     }
 
     if (deptFilter) {
-      const df = String(deptFilter)
+      const df = String(deptFilter);
       if (String(s.department) === df) {
         // match by id, ok
       } else {
         if (
           !(
-            (s.department_name ?? "").toLowerCase().includes(df.toLowerCase()) ||
+            (s.department_name ?? "")
+              .toLowerCase()
+              .includes(df.toLowerCase()) ||
             String(s.department ?? "").toLowerCase() === df.toLowerCase()
           )
         ) {
-          return false
+          return false;
         }
       }
     }
 
     if (search && search.trim() !== "") {
-      const q = search.toLowerCase().trim()
-      const nameMatch = s.name?.toLowerCase().includes(q)
-      const emailMatch = s.email?.toLowerCase().includes(q)
-      const prnMatch = String(s.prn ?? "").toLowerCase().includes(q)
-      const deptNameMatch = (s.department_name ?? "").toLowerCase().includes(q)
-      return Boolean(nameMatch || emailMatch || prnMatch || deptNameMatch)
+      const q = search.toLowerCase().trim();
+      const nameMatch = s.name?.toLowerCase().includes(q);
+      const emailMatch = s.email?.toLowerCase().includes(q);
+      const prnMatch = String(s.prn ?? "")
+        .toLowerCase()
+        .includes(q);
+      const deptNameMatch = (s.department_name ?? "").toLowerCase().includes(q);
+      return Boolean(nameMatch || emailMatch || prnMatch || deptNameMatch);
     }
 
-    return true
-  })
+    return true;
+  });
 
   const handlePrev = () => {
-    if (page > 1) setPage((p) => p - 1)
-  }
+    if (page > 1) setPage((p) => p - 1);
+  };
 
   const handleNext = () => {
-    if (page < totalPages) setPage((p) => p + 1)
-  }
+    if (page < totalPages) setPage((p) => p + 1);
+  };
 
   return (
     <div>
@@ -214,8 +228,8 @@ export function StudentsPage({ token }: StudentsPageProps) {
           </Button>
           <Button
             onClick={() => {
-              setEditingStudent(null)
-              setShowForm(true)
+              setEditingStudent(null);
+              setShowForm(true);
             }}
             className="flex items-center gap-2"
           >
@@ -225,15 +239,21 @@ export function StudentsPage({ token }: StudentsPageProps) {
         </div>
       </div>
 
-      {showForm && <StudentForm token={token} student={editingStudent} onClose={handleFormClose} />}
+      {showForm && (
+        <StudentForm
+          token={token}
+          student={editingStudent}
+          onClose={handleFormClose}
+        />
+      )}
 
       {showBulkUpload && (
         <BulkUploadDialog
           token={token}
           type="students"
           onClose={() => {
-            setShowBulkUpload(false)
-            fetchStudents(page)
+            setShowBulkUpload(false);
+            fetchStudents(page);
           }}
         />
       )}
@@ -275,7 +295,8 @@ export function StudentsPage({ token }: StudentsPageProps) {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            Page {page} of {totalPages} • Showing {filteredStudents.length} of {totalCount} students
+            Page {page} of {totalPages} • Showing {filteredStudents.length} of{" "}
+            {totalCount} students
           </div>
         </div>
 
@@ -283,24 +304,42 @@ export function StudentsPage({ token }: StudentsPageProps) {
           <table className="w-full">
             <thead className="border-b border-border">
               <tr>
-                <th className="text-left p-6 font-semibold text-foreground">Name</th>
-                <th className="text-left p-6 font-semibold text-foreground">Email</th>
-                <th className="text-left p-6 font-semibold text-foreground">Roll Number</th>
-                <th className="text-left p-6 font-semibold text-foreground">Year</th>
-                <th className="text-left p-6 font-semibold text-foreground">Department</th>
-                <th className="text-right p-6 font-semibold text-foreground">Actions</th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Name
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Email
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Roll Number
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Year
+                </th>
+                <th className="text-left p-6 font-semibold text-foreground">
+                  Department
+                </th>
+                <th className="text-right p-6 font-semibold text-foreground">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={6}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     Loading...
                   </td>
                 </tr>
               ) : filteredStudents.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-6 text-center text-muted-foreground">
+                  <td
+                    colSpan={6}
+                    className="p-6 text-center text-muted-foreground"
+                  >
                     No students found
                   </td>
                 </tr>
@@ -310,12 +349,19 @@ export function StudentsPage({ token }: StudentsPageProps) {
                     key={student.id}
                     className="border-b border-border hover:bg-muted/50 transition"
                   >
-                    <td className="p-6 font-medium text-foreground">{student.name}</td>
-                    <td className="p-6 text-muted-foreground">{student.email}</td>
-                    <td className="p-6 text-muted-foreground">{student.prn}</td>
-                    <td className="p-6 text-muted-foreground">{student.year}</td>
+                    <td className="p-6 font-medium text-foreground">
+                      {student.name}
+                    </td>
                     <td className="p-6 text-muted-foreground">
-                      {student.department_name ?? String(student.department ?? "-")}
+                      {student.email}
+                    </td>
+                    <td className="p-6 text-muted-foreground">{student.prn}</td>
+                    <td className="p-6 text-muted-foreground">
+                      {student.year}
+                    </td>
+                    <td className="p-6 text-muted-foreground">
+                      {student.department_name ??
+                        String(student.department ?? "-")}
                     </td>
                     <td className="p-6">
                       <div className="flex justify-end gap-2">
@@ -323,8 +369,8 @@ export function StudentsPage({ token }: StudentsPageProps) {
                           variant="ghost"
                           size="sm"
                           onClick={() => {
-                            setEditingStudent(student)
-                            setShowForm(true)
+                            setEditingStudent(student);
+                            setShowForm(true);
                           }}
                           className="text-primary"
                         >
@@ -355,11 +401,15 @@ export function StudentsPage({ token }: StudentsPageProps) {
           <span className="text-sm text-muted-foreground">
             Page {page} of {totalPages}
           </span>
-          <Button variant="outline" onClick={handleNext} disabled={page >= totalPages}>
+          <Button
+            variant="outline"
+            onClick={handleNext}
+            disabled={page >= totalPages}
+          >
             Next
           </Button>
         </div>
       </Card>
     </div>
-  )
+  );
 }

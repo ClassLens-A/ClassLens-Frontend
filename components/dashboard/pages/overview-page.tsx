@@ -1,47 +1,50 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Users, BookOpen, Award } from "lucide-react"
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Users, BookOpen, Award } from "lucide-react";
 
 interface OverviewPageProps {
-  token: string | null
+  token: string | null;
 }
 
 interface Stats {
-  teachers_count: number
-  students_count: number
-  subjects_count: number
+  teachers_count: number;
+  students_count: number;
+  subjects_count: number;
 }
 
 export function OverviewPage({ token }: OverviewPageProps) {
-  const [stats, setStats] = useState<Stats | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [stats, setStats] = useState<Stats | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!token) return
+    if (!token) return;
 
     const fetchStats = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/admin/stats/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/stats/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (response.ok) {
-          const data = await response.json()
-          setStats(data)
+          const data = await response.json();
+          setStats(data);
         }
       } catch (err) {
-        console.log("[v0] Stats fetch error:", err)
+        console.log("[v0] Stats fetch error:", err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchStats()
-  }, [token])
+    fetchStats();
+  }, [token]);
 
   const statCards = [
     {
@@ -62,41 +65,49 @@ export function OverviewPage({ token }: OverviewPageProps) {
       icon: BookOpen,
       color: "bg-purple-50 dark:bg-purple-950 text-purple-600",
     },
-  ]
+  ];
 
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground">Overview</h1>
-        <p className="text-muted-foreground mt-1">Welcome to ClessLens Admin Panel</p>
+        <p className="text-muted-foreground mt-1">
+          Welcome to ClessLens Admin Panel
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statCards.map((stat) => {
-          const Icon = stat.icon
+          const Icon = stat.icon;
           return (
             <Card key={stat.title} className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-                  <p className="text-3xl font-bold text-foreground mt-2">{loading ? "-" : stat.count}</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {stat.title}
+                  </p>
+                  <p className="text-3xl font-bold text-foreground mt-2">
+                    {loading ? "-" : stat.count}
+                  </p>
                 </div>
                 <div className={`p-3 rounded-lg ${stat.color}`}>
                   <Icon className="w-6 h-6" />
                 </div>
               </div>
             </Card>
-          )
+          );
         })}
       </div>
 
       <Card className="mt-8 p-6">
-        <h2 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-4">
+          Quick Actions
+        </h2>
         <p className="text-muted-foreground">
-          Use the sidebar to navigate to Teachers, Students, or Subjects sections to manage your institution&apos;s
-          data.
+          Use the sidebar to navigate to Teachers, Students, or Subjects
+          sections to manage your institution&apos;s data.
         </p>
       </Card>
     </div>
-  )
+  );
 }

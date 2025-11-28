@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { X } from "lucide-react";
 
 interface AdminUserFormProps {
-  token: string | null
-  admin?: { id: string; username: string; is_active: boolean } | null
-  onClose: () => void
+  token: string | null;
+  admin?: { id: string; username: string; is_active: boolean } | null;
+  onClose: () => void;
 }
 
 export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
@@ -19,9 +19,9 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
     username: "",
     password: "",
     is_active: true,
-  })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (admin) {
@@ -29,25 +29,28 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
         username: admin.username,
         password: "",
         is_active: admin.is_active,
-      })
+      });
     }
-  }, [admin])
+  }, [admin]);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
       const url = admin
-        ? `http://127.0.0.1:8000/api/admin/admin-users/${admin.id}/`
-        : "http://127.0.0.1:8000/api/admin/admin-users/"
+        ? process.env.NEXT_PUBLIC_BACKEND_URL +
+          `/api/admin/admin-users/${admin.id}/`
+        : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/admin-users/";
 
-      const method = admin ? "PUT" : "POST"
+      const method = admin ? "PUT" : "POST";
 
       // For updates, only include password if it's not empty
       const body =
-        admin && !formData.password ? { username: formData.username, is_active: formData.is_active } : formData
+        admin && !formData.password
+          ? { username: formData.username, is_active: formData.is_active }
+          : formData;
 
       const response = await fetch(url, {
         method,
@@ -56,27 +59,34 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body),
-      })
+      });
 
       if (!response.ok) {
-        const data = await response.json()
-        setError(data.detail || data.password?.[0] || "Failed to save admin user")
-        return
+        const data = await response.json();
+        setError(
+          data.detail || data.password?.[0] || "Failed to save admin user"
+        );
+        return;
       }
 
-      onClose()
+      onClose();
     } catch (err) {
-      setError("Network error")
+      setError("Network error");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Card className="mb-6 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-foreground">{admin ? "Edit Admin User" : "Add New Admin User"}</h2>
-        <button onClick={onClose} className="text-muted-foreground hover:text-foreground">
+        <h2 className="text-xl font-semibold text-foreground">
+          {admin ? "Edit Admin User" : "Add New Admin User"}
+        </h2>
+        <button
+          onClick={onClose}
+          className="text-muted-foreground hover:text-foreground"
+        >
           <X className="w-5 h-5" />
         </button>
       </div>
@@ -84,21 +94,27 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">Username</label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              Username
+            </label>
             <Input
               value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, username: e.target.value })
+              }
               required
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">
-              Password 
+              Password
             </label>
             <Input
               type="password"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
               required={!admin}
             />
           </div>
@@ -109,10 +125,15 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
             type="checkbox"
             id="is_active"
             checked={formData.is_active}
-            onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
+            onChange={(e) =>
+              setFormData({ ...formData, is_active: e.target.checked })
+            }
             className="rounded border-input"
           />
-          <label htmlFor="is_active" className="text-sm font-medium text-foreground">
+          <label
+            htmlFor="is_active"
+            className="text-sm font-medium text-foreground"
+          >
             Active
           </label>
         </div>
@@ -129,5 +150,5 @@ export function AdminUserForm({ token, admin, onClose }: AdminUserFormProps) {
         </div>
       </form>
     </Card>
-  )
+  );
 }

@@ -37,9 +37,12 @@ export function TeachersPage({ token }: TeachersPageProps) {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/teachers", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/api/admin/teachers",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -56,7 +59,7 @@ export function TeachersPage({ token }: TeachersPageProps) {
     if (!token) return;
 
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this teacher?"
+      "Are you sure you want to delete this teacher?",
     );
 
     if (!confirmDelete) return;
@@ -67,7 +70,7 @@ export function TeachersPage({ token }: TeachersPageProps) {
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
 
       if (response.ok) {
@@ -89,7 +92,7 @@ export function TeachersPage({ token }: TeachersPageProps) {
   const filteredTeachers = teachers.filter(
     (t) =>
       t.name.toLowerCase().includes(search.toLowerCase()) ||
-      t.email.toLowerCase().includes(search.toLowerCase())
+      t.email.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (

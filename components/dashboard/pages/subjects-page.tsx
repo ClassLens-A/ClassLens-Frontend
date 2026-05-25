@@ -175,9 +175,6 @@ export function SubjectsPage({ token }: SubjectsPageProps) {
                 <th className="text-left p-6 font-semibold text-foreground">
                   Code
                 </th>
-                <th className="text-left p-6 font-semibold text-foreground">
-                  Description
-                </th>
                 <th className="text-right p-6 font-semibold text-foreground">
                   Actions
                 </th>
@@ -187,7 +184,7 @@ export function SubjectsPage({ token }: SubjectsPageProps) {
               {loading ? (
                 <tr>
                   <td
-                    colSpan={4}
+                    colSpan={3}
                     className="p-6 text-center text-muted-foreground"
                   >
                     Loading...
@@ -196,7 +193,7 @@ export function SubjectsPage({ token }: SubjectsPageProps) {
               ) : filteredSubjects.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={4}
+                    colSpan={3}
                     className="p-6 text-center text-muted-foreground"
                   >
                     No subjects found
@@ -213,9 +210,6 @@ export function SubjectsPage({ token }: SubjectsPageProps) {
                     </td>
                     <td className="p-6 text-muted-foreground">
                       {subject.code}
-                    </td>
-                    <td className="p-6 text-muted-foreground">
-                      {subject.description}
                     </td>
                     <td className="p-6">
                       <div className="flex justify-end gap-2">

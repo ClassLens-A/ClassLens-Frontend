@@ -8,6 +8,7 @@ import { SubjectsPage } from "./pages/subjects-page"
 import { OverviewPage } from "./pages/overview-page"
 import { SubjectFromDeptPage } from "./pages/subject-from-dept-page"
 import { StudentEnrollmentsPage } from "./pages/student-enrollments-page"
+import { DivisionsPage } from "./pages/divisions-page"
 import { Button } from "@/components/ui/button"
 import { AdminUsersPage } from "./pages/admin-users-page"
 import { LogOut, Menu, X } from "lucide-react"
@@ -17,7 +18,15 @@ interface DashboardProps {
   onLogout: () => void
 }
 
-type Page = "overview" | "teachers" | "students" | "subjects" | "subject-from-dept" | "student-enrollments" | "admin-users"
+type Page =
+  | "overview"
+  | "teachers"
+  | "students"
+  | "divisions"
+  | "subjects"
+  | "subject-from-dept"
+  | "student-enrollments"
+  | "admin-users"
 
 export function Dashboard({ adminToken, onLogout }: DashboardProps) {
   const [currentPage, setCurrentPage] = useState<Page>("overview")
@@ -33,6 +42,8 @@ export function Dashboard({ adminToken, onLogout }: DashboardProps) {
         return <AdminUsersPage token={adminToken} />
       case "students":
         return <StudentsPage token={adminToken} />
+      case "divisions":
+        return <DivisionsPage token={adminToken} />
       case "subjects":
         return <SubjectsPage token={adminToken} />
       case "subject-from-dept":

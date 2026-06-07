@@ -1,6 +1,6 @@
 "use client"
 
-import { LayoutDashboard, Users, BookOpen, Link2, UserCheck, Shield, Layers } from "lucide-react"
+import { LayoutDashboard, Users, BookOpen, Link2, UserCheck, Shield, Layers, Calendar } from "lucide-react"
 
 interface SidebarProps {
   currentPage: string
@@ -19,6 +19,7 @@ export function Sidebar({ currentPage, onPageChange, isOpen }: SidebarProps) {
     { id: "subjects", label: "Subjects", icon: BookOpen },
     { id: "subject-from-dept", label: "Subject → Dept", icon: Link2 },
     { id: "student-enrollments", label: "Enrollments", icon: UserCheck },
+    { id: "holidays", label: "Holidays", icon: Calendar },
   ]
 
   return (

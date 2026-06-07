@@ -11,6 +11,7 @@ import { StudentEnrollmentsPage } from "./pages/student-enrollments-page"
 import { DivisionsPage } from "./pages/divisions-page"
 import { Button } from "@/components/ui/button"
 import { AdminUsersPage } from "./pages/admin-users-page"
+import { HolidaysPage } from "./pages/holidays-page"
 import { LogOut, Menu, X } from "lucide-react"
 
 interface DashboardProps {
@@ -27,6 +28,7 @@ type Page =
   | "subject-from-dept"
   | "student-enrollments"
   | "admin-users"
+  | "holidays"
 
 export function Dashboard({ adminToken, onLogout }: DashboardProps) {
   const [currentPage, setCurrentPage] = useState<Page>("overview")
@@ -50,6 +52,8 @@ export function Dashboard({ adminToken, onLogout }: DashboardProps) {
         return <SubjectFromDeptPage token={adminToken} />
       case "student-enrollments":
         return <StudentEnrollmentsPage token={adminToken} />
+      case "holidays":
+        return <HolidaysPage token={adminToken} />
       default:
         return <OverviewPage token={adminToken} />
     }

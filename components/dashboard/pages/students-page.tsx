@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Pencil, Trash2, Upload } from "lucide-react";
 import { StudentForm } from "../forms/student-form";
-import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog";
+import { StudentBulkUploadDialog } from "../dialogs/student-bulk-upload-dialog";
 
 interface StudentsPageProps {
   token: string | null;
@@ -356,9 +356,8 @@ export function StudentsPage({ token }: StudentsPageProps) {
       )}
 
       {showBulkUpload && (
-        <BulkUploadDialog
+        <StudentBulkUploadDialog
           token={token}
-          type="students"
           onClose={() => {
             setShowBulkUpload(false);
             fetchStudents();

@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus, Pencil, Trash2, Upload } from "lucide-react";
+import { Plus, Pencil, Trash2, Upload, BookOpen } from "lucide-react";
 import { TeacherForm } from "../forms/teacher-form";
 import { BulkUploadDialog } from "../dialogs/bulk-upload-dialog";
+import { TeacherSubjectMappingDialog } from "../dialogs/teacher-subject-mapping-dialog";
 
 interface TeachersPageProps {
   token: string | null;
@@ -19,6 +20,7 @@ interface Teacher {
   phone: string;
   department_name: string;
 }
+
 
 const normalizeTeachers = (payload: unknown): Teacher[] => {
   const container = payload as {
@@ -49,8 +51,10 @@ export function TeachersPage({ token }: TeachersPageProps) {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [editingTeacher, setEditingTeacher] = useState<Teacher | null>(null);
+  const [mappingTeacher, setMappingTeacher] = useState<Teacher | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [showBulkUpload, setShowBulkUpload] = useState(false);
+
 
   useEffect(() => {
     fetchTeachers();
@@ -238,6 +242,16 @@ export function TeachersPage({ token }: TeachersPageProps) {
                         <Button
                           variant="ghost"
                           size="sm"
+                          onClick={() => setMappingTeacher(teacher)}
+                          className="text-foreground hover:text-primary flex items-center gap-1.5"
+                          title="Map Subjects"
+                        >
+                          <BookOpen className="w-4 h-4" />
+                          <span className="hidden xl:inline text-xs">Map Subjects</span>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
                           onClick={() => {
                             setEditingTeacher(teacher);
                             setShowForm(true);
@@ -263,6 +277,14 @@ export function TeachersPage({ token }: TeachersPageProps) {
           </table>
         </div>
       </Card>
+
+      {mappingTeacher && (
+        <TeacherSubjectMappingDialog
+          token={token}
+          teacher={mappingTeacher}
+          onClose={() => setMappingTeacher(null)}
+        />
+      )}
     </div>
   );
 }

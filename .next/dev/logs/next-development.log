@@ -1,46 +1,8 @@
-[00:00:01.399] Server  LOG      ✓ Ready in 884ms
-[00:00:04.932] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.822] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:05.822] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:05.822] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1780916577531} /_vercel/insights/view
-[00:00:08.727] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:08.871] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:08.871] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:08.871] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1780916581198} /_vercel/insights/view
-[00:00:22.509] Browser LOG     Backend URL: http://localhost:8000/
-[00:00:35.558] Browser LOG     Backend URL: http://localhost:8000/
-[00:00:48.155] Browser LOG     Backend URL: http://localhost:8000/
-[00:00:48.668] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDAzMDIwLCJpYXQiOjE3ODA5MTY2MjAsImp0aSI6ImNiYjg0YzY1MWI5ODQyNTY4MWI4MDg0NzY3MDJjNTE5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.poIUATexi8fdhI-MIJLT--EvPdjkzTjSXFnBbkjtdwY
-[00:01:01.641] Browser LOG     Fetching admins with token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDAzMDIwLCJpYXQiOjE3ODA5MTY2MjAsImp0aSI6ImNiYjg0YzY1MWI5ODQyNTY4MWI4MDg0NzY3MDJjNTE5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.poIUATexi8fdhI-MIJLT--EvPdjkzTjSXFnBbkjtdwY
-[00:01:01.641] Browser LOG     Fetching admins with token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDAzMDIwLCJpYXQiOjE3ODA5MTY2MjAsImp0aSI6ImNiYjg0YzY1MWI5ODQyNTY4MWI4MDg0NzY3MDJjNTE5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.poIUATexi8fdhI-MIJLT--EvPdjkzTjSXFnBbkjtdwY
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:09.767] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:34.446] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:35.126] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:35.937] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:36.218] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:36.787] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:04:38.229] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 313-3
-[00:19:16.091] Server  LOG      ✓ Compiled in 82ms
-[00:19:19.828] Server  LOG      ✓ Compiled in 65ms
-[00:19:27.016] Server  LOG      ✓ Compiled in 65ms
-[00:19:41.948] Server  LOG      ✓ Compiled in 133ms
-[00:22:51.477] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:22:51.665] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:22:51.665] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:22:51.665] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1780917943990} /_vercel/insights/view
-[00:23:01.970] Browser LOG     Backend URL: http://localhost:8000/
-[00:23:02.479] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDA0MzU0LCJpYXQiOjE3ODA5MTc5NTQsImp0aSI6ImQzZDNjMWNjMDY0ZTQzNWNhZWJkY2Y0YTgzM2FhYTY0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.M7AO1SQWuBLhEIzDOhk098Yl-EtTedD-aEHPnO253QQ
-[00:27:07.886] Server  LOG      ✓ Compiled in 122ms
-[00:27:23.892] Server  LOG      ✓ Compiled in 147ms
-[00:28:22.884] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:28:23.066] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:28:23.066] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:28:23.066] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1780918275387} /_vercel/insights/view
-[00:28:35.614] Browser LOG     Backend URL: http://localhost:8000/
-[00:28:36.550] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDA0Njg4LCJpYXQiOjE3ODA5MTgyODgsImp0aSI6ImRjOTkyMTViNWM1YzQyYThiODI3NjY3ZDdmNWYxMTMzIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.y9BTfeAWtPJoECMDL1vw1zW51oZ-AMo1233gl6c95CQ
+[00:00:01.575] Server  LOG      ✓ Ready in 1043ms
+[00:00:04.657] Server  LOG      ○ Compiling / ...
+[00:00:06.485] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.709] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:06.710] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:06.710] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1780989241821} /_vercel/insights/view
+[00:00:08.668] Browser LOG     Backend URL: http://127.0.0.1:8000
+[00:00:09.652] Browser LOG     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMDc1NjQ0LCJpYXQiOjE3ODA5ODkyNDQsImp0aSI6IjY1MGU3MzllNDBlYzRkZWJiYjc4NjIyZjY2NDlkODAzIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.ci3TwkaCvgMvSfwhDRdO5oCeEijvvbY6k8bCv0ot3SY

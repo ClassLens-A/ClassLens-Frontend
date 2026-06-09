@@ -512,6 +512,7 @@ export function AnalyticsPage({ token }: AnalyticsPageProps) {
                 <tr>
                   <th className="text-left p-6 font-semibold text-foreground">PRN</th>
                   <th className="text-left p-6 font-semibold text-foreground">Name</th>
+                  <th className="text-left p-6 font-semibold text-foreground">Email</th>
                   <th className="text-left p-6 font-semibold text-foreground">Division</th>
                   <th className="text-left p-6 font-semibold text-foreground">Subject</th>
                   <th className="text-left p-6 font-semibold text-foreground text-center">Classes</th>
@@ -521,13 +522,13 @@ export function AnalyticsPage({ token }: AnalyticsPageProps) {
               <tbody>
                 {loading ? (
                   <tr>
-                    <td colSpan={6} className="p-6 text-center text-muted-foreground">
+                    <td colSpan={7} className="p-6 text-center text-muted-foreground">
                       Loading stats...
                     </td>
                   </tr>
                 ) : filteredStats.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="p-6 text-center text-muted-foreground">
+                    <td colSpan={7} className="p-6 text-center text-muted-foreground">
                       No defaulters or attendance records found matching criteria
                     </td>
                   </tr>
@@ -537,10 +538,12 @@ export function AnalyticsPage({ token }: AnalyticsPageProps) {
                     return (
                       <tr
                         key={`${item.student_id}-${item.subject_id || idx}-${idx}`}
-                        className="border-b border-border hover:bg-muted/50 transition"
+                        className="border-b border-border hover:bg-muted/50 transition cursor-pointer"
+                        onClick={() => setSearch(item.prn.toString())}
                       >
                         <td className="p-6 font-medium text-foreground">{item.prn}</td>
                         <td className="p-6 text-foreground font-medium">{item.student_name}</td>
+                        <td className="p-6 text-muted-foreground">{item.email}</td>
                         <td className="p-6 text-muted-foreground">{item.division_name}</td>
                         <td className="p-6 text-muted-foreground">
                           {item.subject_name} ({item.subject_code})
